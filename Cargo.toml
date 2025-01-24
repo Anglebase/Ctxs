@@ -2,5 +2,8 @@
 name = "ctxs"
 version = "0.1.0"
 edition = "2021"
+description = "显式的代码上下文管理设施"
+repository = "https://github.com/Anglebase/Ctxs.git"
+license = "MIT"
 
 [dependencies]
