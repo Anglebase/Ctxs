@@ -96,13 +96,13 @@ pub trait ContextMut<T> {
 /// }
 ///
 /// impl MutContext<Self> for MyStruct {
-///     fn mut_context<R, F: FnOnce(&mut Self) -> R>(&mut self, local: F) -> R {
+///     fn context<R, F: FnOnce(&mut Self) -> R>(&mut self, local: F) -> R {
 ///         local(self)
 ///     }
 /// }
 ///
 /// let mut ctx = MyStruct { value: 10 };
-/// ctx.mut_context(|ctx| {
+/// ctx.context(|ctx| {
 ///     assert_eq!(ctx.value, 10);
 ///     ctx.value = 20;
 /// });
@@ -118,7 +118,7 @@ pub trait MutContext<T> {
     /// # 返回值
     ///
     /// 应是闭包的返回值
-    fn mut_context<R, F: FnOnce(&mut T) -> R>(&mut self, local: F) -> R;
+    fn context<R, F: FnOnce(&mut T) -> R>(&mut self, local: F) -> R;
 }
 
 use std::sync::Mutex;
